@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background: linear-gradient(135deg, #F7F7F2 0%, #F3F0EA 100%);
+    color: #0F172A;
+    font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection {
+    background: rgba(255, 107, 44, 0.2);
+    color: #0F172A;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+    font-weight: 600;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply px-6 py-3 rounded-full bg-gradient-orange text-white font-semibold transition-all duration-300 hover:shadow-soft-lg hover:scale-105 active:scale-95;
+  }
+
+  .btn-secondary {
+    @apply px-6 py-3 rounded-full bg-zylo-surface text-zylo-text font-semibold border border-zylo-border transition-all duration-300 hover:shadow-soft-md active:scale-95;
+  }
+
+  .card {
+    @apply bg-zylo-surface rounded-2xl p-6 shadow-soft border border-zylo-border transition-all duration-300 hover:shadow-soft-lg;
+  }
+
+  .input-prompt {
+    @apply w-full px-6 py-4 rounded-full bg-zylo-surface border border-zylo-border text-zylo-text placeholder-zylo-muted focus:outline-none focus:ring-2 focus:ring-zylo-orange focus:border-transparent transition-all duration-300 shadow-soft;
+  }
+}
+
+@layer utilities {
+  .glow-orange {
+    box-shadow: 0 0 30px rgba(255, 107, 44, 0.2);
+  }
+
+  .glow-soft {
+    box-shadow: 0 0 20px rgba(255, 107, 44, 0.1);
+  }
+
+  .glow-text {
+    text-shadow: 0 0 40px rgba(59, 130, 246, 0.5);
+  }
+
+  .border-glow {
+    border: 1px solid rgba(59, 130, 246, 0.2);
+  }
+}
