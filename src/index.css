@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -10,7 +10,7 @@
   }
 
   body {
-    background: linear-gradient(135deg, #F7F7F2 0%, #F3F0EA 100%);
+    background: #F7F2EC;
     color: #0F172A;
     font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -23,42 +23,90 @@
 
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
-    font-weight: 600;
+    font-weight: 800;
   }
 }
 
 @layer components {
+
+  /* Botones */
   .btn-primary {
-    @apply px-6 py-3 rounded-full bg-gradient-orange text-white font-semibold transition-all duration-300 hover:shadow-soft-lg hover:scale-105 active:scale-95;
+    @apply px-6 py-3 rounded-full text-white font-bold transition-all duration-300 hover:scale-105 active:scale-95;
+    background: linear-gradient(135deg, #FF2D6B 0%, #FF6B2C 50%, #FFAA2C 100%);
+    box-shadow: 0 0 20px rgba(255,107,44,0.3);
+  }
+  .btn-primary:hover {
+    box-shadow: 0 0 40px rgba(255,107,44,0.5), 0 0 80px rgba(255,45,107,0.2);
   }
 
   .btn-secondary {
-    @apply px-6 py-3 rounded-full bg-zylo-surface text-zylo-text font-semibold border border-zylo-border transition-all duration-300 hover:shadow-soft-md active:scale-95;
+    @apply px-6 py-3 rounded-full bg-white text-zylo-text font-semibold border border-zylo-border transition-all duration-300 hover:shadow-soft-md hover:border-zylo-orange active:scale-95;
   }
 
+  /* Cards */
   .card {
-    @apply bg-zylo-surface rounded-2xl p-6 shadow-soft border border-zylo-border transition-all duration-300 hover:shadow-soft-lg;
+    @apply bg-white rounded-2xl p-6 shadow-soft border border-zylo-border transition-all duration-300;
+  }
+  .card:hover {
+    box-shadow: 0 8px 30px rgba(255,107,44,0.08), 0 2px 8px rgba(0,0,0,0.04);
+    border-color: rgba(255,107,44,0.2);
   }
 
+  /* Card dark */
+  .card-dark {
+    @apply rounded-2xl p-6 transition-all duration-300;
+    background: #141414;
+    border: 1px solid #2A2A2A;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+  }
+  .card-dark:hover {
+    border-color: rgba(255,107,44,0.3);
+    box-shadow: 0 8px 40px rgba(255,107,44,0.1);
+  }
+
+  /* Input */
   .input-prompt {
-    @apply w-full px-6 py-4 rounded-full bg-zylo-surface border border-zylo-border text-zylo-text placeholder-zylo-muted focus:outline-none focus:ring-2 focus:ring-zylo-orange focus:border-transparent transition-all duration-300 shadow-soft;
+    @apply w-full px-6 py-4 rounded-full bg-white border border-zylo-border text-zylo-text placeholder-zylo-muted focus:outline-none focus:ring-2 focus:border-transparent transition-all duration-300 shadow-soft;
+    --tw-ring-color: rgba(255,107,44,0.4);
+  }
+
+  /* Badge / pill de categoría */
+  .badge-brand {
+    @apply inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase;
+    background: rgba(255,107,44,0.1);
+    border: 1px solid rgba(255,107,44,0.25);
+    color: #FF6B2C;
+  }
+
+  /* Texto con degradado de marca */
+  .text-gradient {
+    background: linear-gradient(135deg, #FF2D6B 0%, #FF6B2C 50%, #FFAA2C 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Sección dark premium */
+  .section-dark {
+    background: linear-gradient(135deg, #1A0800 0%, #0A0A0A 100%);
+    color: #F5F5F0;
+  }
+
+  /* Punto de marca degradado */
+  .brand-dot {
+    @apply inline-block rounded-full flex-shrink-0;
+    background: linear-gradient(135deg, #FF2D6B 0%, #FF6B2C 50%, #FFAA2C 100%);
   }
 }
 
 @layer utilities {
+  .glow-brand {
+    box-shadow: 0 0 30px rgba(255,107,44,0.25), 0 0 60px rgba(255,45,107,0.1);
+  }
+  .glow-brand-lg {
+    box-shadow: 0 0 50px rgba(255,107,44,0.35), 0 0 100px rgba(255,45,107,0.15);
+  }
   .glow-orange {
-    box-shadow: 0 0 30px rgba(255, 107, 44, 0.2);
-  }
-
-  .glow-soft {
-    box-shadow: 0 0 20px rgba(255, 107, 44, 0.1);
-  }
-
-  .glow-text {
-    text-shadow: 0 0 40px rgba(59, 130, 246, 0.5);
-  }
-
-  .border-glow {
-    border: 1px solid rgba(59, 130, 246, 0.2);
+    box-shadow: 0 0 30px rgba(255,107,44,0.2);
   }
 }

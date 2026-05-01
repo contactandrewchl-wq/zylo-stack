@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion'
 import { Check, MessageCircle } from 'lucide-react'
-import { CONTACT } from '../config/contact'
 import ObfuscatedLink from "../components/ObfuscatedLink"
 
 const plans = [
@@ -73,176 +72,190 @@ const faqs = [
 
 export default function Pricing() {
   return (
-    <div className="pt-32 pb-24 px-6 bg-zylo-bg min-h-screen">
+    <div className="min-h-screen" style={{ background: '#F7F2EC' }}>
 
       {/* Header */}
-      <div className="text-center mb-16 max-w-2xl mx-auto">
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-zylo-orange text-sm font-semibold tracking-wide uppercase mb-2"
-        >
-          Precios
-        </motion.p>
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="font-display font-bold text-4xl sm:text-5xl text-zylo-text mb-4 leading-tight"
-        >
-          Planes claros,
-          <br />
-          <span className="bg-gradient-orange bg-clip-text text-transparent">sin sorpresas</span>
-        </motion.h1>
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-zylo-muted text-lg"
-        >
-          Precios desde — cada proyecto puede variar según alcance y funcionalidades.
-        </motion.p>
+      <div className="relative pt-32 pb-16 px-6 text-center overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-10%,rgba(255,45,107,0.06),transparent)] pointer-events-none" />
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,107,44,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,107,44,0.03)_1px,transparent_1px)] bg-[size:60px_60px] pointer-events-none" />
+
+        <div className="relative max-w-2xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="flex justify-center mb-4"
+          >
+            <span className="badge-brand">Precios</span>
+          </motion.div>
+
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="font-display font-black text-4xl sm:text-5xl text-zylo-text mb-4 leading-tight"
+          >
+            Planes claros,
+            <br />
+            <span className="text-gradient">sin sorpresas</span>
+          </motion.h1>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-zylo-muted text-lg"
+          >
+            Precios desde — cada proyecto puede variar según alcance y funcionalidades.
+          </motion.p>
+        </div>
       </div>
 
       {/* Plans */}
-      <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 mb-6 items-start">
-        {plans.map((plan, index) => (
-          <motion.div
-            key={index}
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
-            className={`card relative flex flex-col ${
-              plan.highlight
-                ? 'border-zylo-orange/40 shadow-[0_0_40px_rgba(255,107,44,0.1)]'
-                : ''
-            }`}
-          >
-            {/* Badge destacado */}
-            {plan.highlight && (
-              <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                <span className="bg-zylo-orange text-white text-xs font-bold px-3 py-1 rounded-full whitespace-nowrap">
-                  Más popular
-                </span>
-              </div>
-            )}
+              <div className="px-6 pb-6">
+                <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 mb-6 items-start">
+                  {plans.map((plan, index) => (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, y: 30 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5, delay: index * 0.1 }}
+                      className={`card relative flex flex-col ${
+                        plan.highlight
+                          ? 'shadow-brand'
+                          : ''
+                      }`}
+                      style={plan.highlight ? { borderColor: 'rgba(255,107,44,0.3)' } : {}}
+                    >
+                      {plan.highlight && (
+                        <div className="absolute -top-3 left-1/2 -translate-x-1/2">
+                          <span className="text-white text-xs font-bold px-3 py-1 rounded-full whitespace-nowrap"
+                            style={{ background: 'linear-gradient(135deg, #FF2D6B, #FF6B2C, #FFAA2C)' }}>
+                            Más popular
+                          </span>
+                        </div>
+                      )}
 
-            {/* Plan info */}
-            <div className="mb-6">
-              <h3 className="font-display font-bold text-xl text-zylo-text mb-1">
-                {plan.name}
-              </h3>
-              <p className="text-zylo-muted text-sm mb-4">
-                {plan.description}
-              </p>
-              <div className="flex items-baseline gap-1">
+              <div className="relative inline-flex items-baseline gap-1">
                 <span className="text-xs text-zylo-muted">Desde</span>
-                <span className="font-display font-bold text-3xl text-zylo-text">
+                <span className="font-display font-black text-3xl text-zylo-text">
                   ${plan.price}
                 </span>
                 <span className="text-xs text-zylo-muted">CLP</span>
+                <span
+                  className="flex -top-3 -right-8 text-xs font-bold px-1.5 py-0.5 rounded-full"
+                  style={{
+                    background: 'rgba(255,107,44,0.1)',
+                    border: '1px solid rgba(255,107,44,0.25)',
+                    color: '#FF6B2C',
+                    fontSize: '9px',
+                  }}
+                >
+                  + IVA
+                </span>
               </div>
-            </div>
 
-            {/* Includes */}
-            <ul className="space-y-3 mb-8 flex-1">
-              {plan.includes.map((item, i) => (
-                <li key={i} className="flex items-start gap-2 text-sm text-zylo-text">
-                  <Check className="w-4 h-4 text-zylo-orange flex-shrink-0 mt-0.5" />
-                  {item}
-                </li>
-              ))}
-            </ul>
+              <ul className="space-y-3 mb-8 flex-1">
+                {plan.includes.map((item, i) => (
+                  <li key={i} className="flex items-start gap-2 text-sm text-zylo-text">
+                    <Check className="w-4 h-4 flex-shrink-0 mt-0.5" style={{ color: '#FF6B2C' }} />
+                    {item}
+                  </li>
+                ))}
+              </ul>
 
-            {/* CTA */}
-            <ObfuscatedLink
-              type="whatsapp"
-              target="_blank"
-              rel="noreferrer"
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.97 }}
-              className={`flex items-center justify-center gap-2 py-2.5 rounded-xl text-sm font-semibold transition-all ${
-                plan.highlight ? 'btn-primary' : 'btn-secondary'
-              }`}
-            >
-              <MessageCircle className="w-4 h-4" />
-              Cotizar este plan
-            </ObfuscatedLink>
-          </motion.div>
-        ))}
-      </div>
-
-      {/* Nota */}
-      <motion.p
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.6, delay: 0.5 }}
-        className="text-center text-zylo-muted text-sm mb-20 max-w-md mx-auto"
-      >
-        ¿Tu proyecto no encaja en ningún plan? Escríbenos y armamos una propuesta a medida.
-      </motion.p>
-
-      {/* FAQ */}
-      <div className="max-w-2xl mx-auto">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="font-display font-bold text-3xl text-zylo-text text-center mb-2"
-        >
-          Preguntas frecuentes
-        </motion.h2>
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-zylo-muted text-center text-sm mb-10"
-        >
-          Todo lo que necesitas saber antes de empezar.
-        </motion.p>
-
-        <div className="flex flex-col gap-4">
-          {faqs.map((faq, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.08 }}
-              className="card"
-            >
-              <h3 className="font-display font-bold text-zylo-text mb-2">
-                {faq.q}
-              </h3>
-              <p className="text-zylo-muted text-sm leading-relaxed">
-                {faq.a}
-              </p>
+              <ObfuscatedLink
+                type="whatsapp"
+                animate
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
+                className={`flex items-center justify-center gap-2 py-2.5 rounded-xl text-sm font-semibold transition-all ${
+                  plan.highlight ? 'btn-primary' : 'btn-secondary'
+                }`}
+              >
+                <MessageCircle className="w-4 h-4" />
+                Cotizar este plan
+              </ObfuscatedLink>
             </motion.div>
           ))}
         </div>
 
-        {/* CTA final */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.5 }}
-          className="mt-12 text-center"
+          className="text-center text-zylo-muted text-sm mb-20 max-w-md mx-auto"
         >
-          <p className="text-zylo-muted text-sm mb-4">
-            ¿Tienes dudas? Escríbenos sin compromiso.
-          </p>
-          <ObfuscatedLink
-            type="whatsapp"
-            target="_blank"
-            rel="noreferrer"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="btn-primary inline-flex items-center gap-2"
+          ¿Tu proyecto no encaja en ningún plan? Escríbenos y armamos una propuesta a medida.
+        </motion.p>
+      </div>
+
+      {/* FAQ — dark section */}
+      <div className="faq-dark relative py-20 px-6 overflow-hidden"
+        style={{ background: 'linear-gradient(135deg, #1A0800 0%, #0A0A0A 100%)' }}>
+
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,107,44,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,107,44,0.03)_1px,transparent_1px)] bg-[size:60px_60px] pointer-events-none" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[200px] rounded-full blur-3xl pointer-events-none"
+          style={{ background: 'radial-gradient(ellipse, rgba(255,45,107,0.08) 0%, transparent 70%)' }} />
+
+        <div className="relative z-10 max-w-2xl mx-auto">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="font-display font-black text-3xl text-zylo-dark-text text-center mb-2"
           >
-            <MessageCircle className="w-4 h-4" />
-            Hablar por WhatsApp
-          </ObfuscatedLink>
-        </motion.div>
+            Preguntas <span className="text-gradient">frecuentes</span>
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="text-zylo-dark-text/50 text-center text-sm mb-10"
+          >
+            Todo lo que necesitas saber antes de empezar.
+          </motion.p>
+
+          <div className="flex flex-col gap-4">
+            {faqs.map((faq, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.08 }}
+                className="card-dark"
+              >
+                <h3 className="font-display font-bold text-zylo-dark-text mb-2">
+                  {faq.q}
+                </h3>
+                <p className="text-zylo-dark-text/50 text-sm leading-relaxed">
+                  {faq.a}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+            className="mt-12 text-center"
+          >
+            <p className="text-zylo-dark-text/40 text-sm mb-4">
+              ¿Tienes dudas? Escríbenos sin compromiso.
+            </p>
+            <ObfuscatedLink
+              type="whatsapp"
+              animate
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="btn-primary inline-flex items-center gap-2"
+            >
+              <MessageCircle className="w-4 h-4" />
+              Hablar por WhatsApp
+            </ObfuscatedLink>
+          </motion.div>
+        </div>
       </div>
 
     </div>

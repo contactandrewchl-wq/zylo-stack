@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion'
 import { MessageCircle, Layout, Code2, CheckCircle, Rocket } from 'lucide-react'
-import { CONTACT } from '../config/contact'
 
 const steps = [
   {
@@ -37,33 +36,35 @@ const steps = [
 
 export default function HowWorks() {
   return (
-    <section id="proceso" className="relative py-24 px-6 bg-zylo-bg-secondary">
-      <div className="absolute inset-0 bg-gradient-soft pointer-events-none" />
+    <section id="proceso" className="relative py-24 px-6 bg-zylo-bg">
+
+      {/* Grid decorativo */}
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,107,44,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,107,44,0.02)_1px,transparent_1px)] bg-[size:60px_60px] pointer-events-none" />
 
       <div className="relative z-10 max-w-4xl mx-auto">
 
         {/* Header */}
         <div className="text-center mb-16">
-          <motion.p
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="text-zylo-orange text-sm font-semibold tracking-wide uppercase mb-2"
+            className="flex justify-center mb-4"
           >
-            Nuestro Proceso
-          </motion.p>
+            <span className="badge-brand">Nuestro Proceso</span>
+          </motion.div>
 
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
             viewport={{ once: true }}
-            className="font-display font-bold text-4xl sm:text-5xl text-zylo-text mb-4 leading-tight"
+            className="font-display font-black text-4xl sm:text-5xl text-zylo-text mb-4 leading-tight"
           >
             Un proceso simple,
             <br />
-            claro y acompañado
+            <span className="text-gradient">claro y acompañado</span>
           </motion.h2>
 
           <motion.p
@@ -77,10 +78,10 @@ export default function HowWorks() {
           </motion.p>
         </div>
 
-        {/* Steps — línea vertical */}
+        {/* Steps */}
         <div className="relative flex flex-col gap-0">
 
-         
+          
 
           {steps.map((step, index) => {
             const Icon = step.icon
@@ -93,10 +94,18 @@ export default function HowWorks() {
                 viewport={{ once: true }}
                 className="relative flex items-start gap-6 pb-10 last:pb-0"
               >
-                {/* Número / ícono */}
-                <div className="relative z-10 flex-shrink-0 w-16 h-16 rounded-2xl bg-zylo-orange/10 border border-zylo-orange/20 flex flex-col items-center justify-center gap-0.5">
-                  <Icon className="w-5 h-5 text-zylo-orange" />
-                  <span className="text-xs font-bold text-zylo-orange/60">{step.number}</span>
+                {/* Ícono con degradado */}
+                <div
+                  className="relative z-10 flex-shrink-0 w-16 h-16 rounded-2xl flex flex-col items-center justify-center gap-0.5 transition-all duration-300"
+                  style={{
+                    background: 'rgba(255,107,44,0.08)',
+                    border: '1px solid rgba(255,107,44,0.2)',
+                  }}
+                >
+                  <Icon className="w-5 h-5" style={{ color: '#FF6B2C' }} />
+                  <span className="text-xs font-bold" style={{ color: 'rgba(255,107,44,0.5)' }}>
+                    {step.number}
+                  </span>
                 </div>
 
                 {/* Contenido */}

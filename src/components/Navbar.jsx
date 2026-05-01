@@ -1,8 +1,9 @@
-import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
 import { CONTACT } from '../config/contact'
 import ObfuscatedLink from './ObfuscatedLink'
+import { useState, useEffect } from 'react'
+import { useLocation } from 'react-router-dom'
 
 const navLinks = [
   { label: 'Servicios', href: '/#servicios' },
@@ -12,8 +13,38 @@ const navLinks = [
   { label: 'Nosotros', href: '/nosotros' },
 ]
 
+const darkSections = {
+  '/':         ['#servicios', '#contacto'],
+  '/precios':  ['.faq-dark'],
+  '/nosotros': ['.nosotros-dark'],
+}
+
+function useDarkSection(selectors = []) {
+  const [isDark, setIsDark] = useState(false)
+
+  useEffect(() => {
+    const onScroll = () => {
+      const dark = selectors.some((selector) => {
+        const el = document.querySelector(selector)
+        if (!el) return false
+        const rect = el.getBoundingClientRect()
+        return rect.top <= 80 && rect.bottom >= 80
+      })
+      setIsDark(dark)
+    }
+
+    window.addEventListener('scroll', onScroll)
+    onScroll()
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [selectors.join(',')])
+
+  return isDark
+}
+
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false)
+  const location = useLocation()
+  const isDark = useDarkSection(darkSections[location.pathname] || [])
 
   return (
     <motion.header
@@ -22,17 +53,18 @@ export default function Navbar() {
       transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
       className="fixed top-0 left-0 right-0 z-50"
     >
-      
       <div className="w-full px-12 h-16 flex items-center relative">
 
-        {/* Logo — izquierda */}
-        <a href="/" className="flex items-center gap-2 flex-shrink-0">
-          <span className="font-display font-bold text-2xl text-zylo-text tracking-tight">
-            zylo<span className="text-zylo-orange">.</span>
-          </span>
+        {/* Logo */}
+        <a href="/" className="flex items-center flex-shrink-0">
+          <img
+            src={isDark ? '/logo_white.svg' : '/logo_black.svg'}
+            alt="zylo stack"
+            className="h-7 w-auto transition-all duration-300"
+          />
         </a>
 
-        {/* Nav pill — centro absoluto */}
+        {/* Nav pill */}
         <nav className="hidden md:flex items-center gap-8 px-4 py-2 rounded-full bg-white/62 backdrop-blur-xl border border-white/30 shadow-[0_4px_20px_rgba(0,0,0,0.08)] absolute left-1/2 -translate-x-1/2">
           {navLinks.map((link, i) => (
             <a
@@ -45,12 +77,11 @@ export default function Navbar() {
           ))}
         </nav>
 
-        {/* CTA — derecha */}
+        {/* CTA */}
         <div className="flex items-center gap-4 ml-auto">
           <ObfuscatedLink
             type="whatsapp"
-            target="_blank"
-            rel="noreferrer"
+            animate
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="hidden md:inline-flex btn-primary text-sm"
@@ -69,7 +100,6 @@ export default function Navbar() {
             )}
           </button>
         </div>
-
       </div>
 
       {/* Mobile Navigation */}

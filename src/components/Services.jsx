@@ -1,4 +1,3 @@
-import { CONTACT } from '../config/contact'
 import { motion } from 'framer-motion'
 import {
   Globe,
@@ -74,34 +73,40 @@ const cardVariants = {
 
 export default function Services() {
   return (
-    <section id="servicios" className="relative py-24 px-6">
-      <div className="absolute inset-0 bg-gradient-soft pointer-events-none" />
-      <div className="absolute -top-40 right-0 w-96 h-96 bg-zylo-orange/3 rounded-full blur-3xl pointer-events-none" />
+    <section id="servicios" className="relative py-24 px-6 section-dark">
 
-      <div className="relative z-10 max-w-7xl mx-auto">
+      {/* Glow orb sutil */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_40%_at_50%_0%,rgba(255,45,107,0.08),transparent)] pointer-events-none" />
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] rounded-full blur-3xl pointer-events-none"
+        style={{ background: 'radial-gradient(circle, rgba(255,170,44,0.06) 0%, transparent 70%)' }} />
+
+      {/* Grid decorativo */}
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,107,44,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,107,44,0.03)_1px,transparent_1px)] bg-[size:60px_60px] pointer-events-none" />
+
+      <div className="relative z-10 max-w-6xl mx-auto">
 
         {/* Header */}
         <div className="text-center mb-16">
-          <motion.p
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="text-zylo-orange text-sm font-semibold tracking-wide uppercase mb-2"
+            className="flex justify-center mb-4"
           >
-            Nuestros Servicios
-          </motion.p>
+            <span className="badge-brand">Nuestros Servicios</span>
+          </motion.div>
 
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
             viewport={{ once: true }}
-            className="font-display font-bold text-4xl sm:text-5xl text-zylo-text mb-4 leading-tight"
+            className="font-display font-black text-4xl sm:text-5xl text-zylo-dark-text mb-4 leading-tight"
           >
             Todo lo que tu negocio necesita
             <br />
-            <span className="bg-gradient-orange bg-clip-text text-transparent">para vender online</span>
+            <span className="text-gradient">para vender online</span>
           </motion.h2>
 
           <motion.p
@@ -109,7 +114,7 @@ export default function Services() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
-            className="text-zylo-muted text-lg max-w-2xl mx-auto"
+            className="text-zylo-dark-text/60 text-lg max-w-2xl mx-auto"
           >
             Desde una landing page simple hasta una app web a medida. Construimos lo que tu negocio necesita, al ritmo que necesitas crecer.
           </motion.p>
@@ -130,19 +135,22 @@ export default function Services() {
                 key={service.id}
                 variants={cardVariants}
                 whileHover="hover"
-                className="card group cursor-pointer hover:border-zylo-orange/30 transition-colors"
+                className="card-dark group cursor-pointer"
               >
-                {/* Icon */}
-                <div className="w-11 h-11 rounded-xl bg-zylo-orange/10 flex items-center justify-center mb-4 group-hover:bg-zylo-orange/20 transition-colors">
-                  <Icon className="w-5 h-5 text-zylo-orange" />
+                {/* Icon con degradado */}
+                <div
+                  className="w-11 h-11 rounded-xl flex items-center justify-center mb-4 transition-all duration-300 group-hover:scale-110"
+                  style={{ background: 'rgba(255,107,44,0.1)', border: '1px solid rgba(255,107,44,0.2)' }}
+                >
+                  <Icon className="w-5 h-5" style={{ color: '#FF6B2C' }} />
                 </div>
 
                 {/* Content */}
-                <h3 className="font-display font-bold text-xl text-zylo-text mb-2">
+                <h3 className="font-display font-bold text-xl text-zylo-dark-text mb-2">
                   {service.title}
                 </h3>
 
-                <p className="text-zylo-muted text-sm leading-relaxed mb-4">
+                <p className="text-zylo-dark-text/50 text-sm leading-relaxed mb-4">
                   {service.description}
                 </p>
 
@@ -151,7 +159,8 @@ export default function Services() {
                   {service.tags.map((tag, i) => (
                     <span
                       key={i}
-                      className="text-xs px-2 py-1 rounded-full bg-zylo-surface border border-zylo-border text-zylo-muted"
+                      className="text-xs px-2 py-1 rounded-full text-zylo-dark-text/40 transition-colors"
+                      style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)' }}
                     >
                       {tag}
                     </span>
@@ -170,14 +179,14 @@ export default function Services() {
           viewport={{ once: true }}
           className="mt-12 text-center"
         >
-          <p className="text-zylo-muted text-sm mb-4">
+          <p className="text-zylo-dark-text/40 text-sm mb-4">
             ¿No encuentras lo que buscas? Conversemos sobre tu proyecto.
           </p>
           <motion.a
             href="#contacto"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="btn-secondary inline-flex items-center gap-2"
+            className="btn-primary inline-flex items-center gap-2"
           >
             Cotizar proyecto personalizado
           </motion.a>

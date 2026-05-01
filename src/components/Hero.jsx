@@ -25,25 +25,26 @@ export default function Hero() {
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden px-6 pt-24 pb-16">
 
-      {/* Fondo glow naranja — consistente con la paleta */}
+      {/* Glow orbs degradado de marca */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-10%,rgba(255,107,44,0.1),transparent)] pointer-events-none" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-zylo-orange/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,107,44,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,107,44,0.03)_1px,transparent_1px)] bg-[size:60px_60px] pointer-events-none" />
 
-      {/* Grid decorativo sutil */}
+      {/* Grid decorativo */}
       <div className="absolute inset-0 bg-[linear-gradient(rgba(255,107,44,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,107,44,0.03)_1px,transparent_1px)] bg-[size:60px_60px] pointer-events-none" />
 
       {/* Contenido */}
       <div className="relative z-10 max-w-3xl mx-auto text-center flex flex-col items-center gap-5">
 
-        {/* Badge */}
+        {/* Badge con degradado */}
         <motion.div
           custom={0}
           variants={fadeUp}
           initial="hidden"
           animate="show"
-          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-zylo-orange/30 bg-zylo-orange/10 text-zylo-orange text-xs font-semibold tracking-widest uppercase"
+          className="badge-brand"
         >
-          <span className="w-1.5 h-1.5 rounded-full bg-zylo-orange animate-pulse" />
+          <span className="w-1.5 h-1.5 rounded-full animate-pulse brand-dot" />
           Estudio Digital — Chile
         </motion.div>
 
@@ -53,11 +54,11 @@ export default function Hero() {
           variants={fadeUp}
           initial="hidden"
           animate="show"
-          className="font-display font-bold text-4xl sm:text-5xl md:text-6xl text-zylo-text leading-tight tracking-tight"
+          className="font-display font-black text-4xl sm:text-5xl md:text-6xl text-zylo-text leading-tight tracking-tight"
         >
           Creamos sitios y apps web
           <br />
-          <span className="bg-gradient-orange bg-clip-text text-transparent">
+          <span className="text-gradient">
             que convierten visitas en clientes
           </span>
         </motion.h1>
@@ -71,7 +72,7 @@ export default function Hero() {
           className="max-w-xl text-sm sm:text-base md:text-lg text-zylo-muted leading-relaxed"
         >
           Diseñamos landing pages, tiendas online y aplicaciones web para emprendedores, marcas y negocios que quieren{' '}
-          <span className="text-zylo-text font-medium">vender, automatizar y crecer.</span>
+          <span className="text-zylo-text font-semibold">vender, automatizar y crecer.</span>
         </motion.p>
 
         {/* CTAs */}
@@ -82,12 +83,12 @@ export default function Hero() {
           animate="show"
           className="flex flex-col sm:flex-row items-center gap-3 mt-1 w-full sm:w-auto"
         >
-          
-          <ObfuscatedLink  
+          <ObfuscatedLink
             type="whatsapp"
-            target="_blank"
-            rel="noreferrer"
-            className="group flex items-center justify-center gap-2 w-full sm:w-auto px-6 py-3 rounded-full bg-zylo-orange hover:bg-zylo-orange-hover text-white text-sm font-semibold transition-all duration-200 shadow-[0_0_30px_rgba(255,107,44,0.3)] hover:shadow-[0_0_50px_rgba(255,107,44,0.5)]"
+            animate
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="group flex items-center justify-center gap-2 w-full sm:w-auto btn-primary text-sm"
           >
             <MessageCircle size={16} />
             Quiero cotizar mi proyecto
@@ -113,7 +114,7 @@ export default function Hero() {
           {pills.map((pill, i) => (
             <span
               key={i}
-              className="px-3 py-1 rounded-full text-xs font-medium bg-zylo-surface border border-zylo-border text-zylo-muted"
+              className="px-3 py-1 rounded-full text-xs font-semibold bg-white border border-zylo-border text-zylo-muted hover:border-zylo-orange/30 hover:text-zylo-orange transition-all duration-200 cursor-default"
             >
               {pill}
             </span>
@@ -128,8 +129,8 @@ export default function Hero() {
           animate="show"
           className="flex items-center gap-2 text-xs text-zylo-muted mt-1"
         >
-        
-          <span>Asesoría inicial sin costo · Sin compromiso</span>
+          <span className="w-2 h-2 rounded-full animate-pulse brand-dot" />
+          Asesoría inicial sin costo · Sin compromiso
         </motion.div>
 
       </div>
@@ -144,7 +145,8 @@ export default function Hero() {
         <motion.div
           animate={{ y: [0, 6, 0] }}
           transition={{ repeat: Infinity, duration: 1.5, ease: 'easeInOut' }}
-          className="w-px h-8 bg-gradient-to-b from-zylo-orange/40 to-transparent"
+          className="w-px h-8"
+          style={{ background: 'linear-gradient(to bottom, #FF6B2C, transparent)' }}
         />
       </motion.div>
 
