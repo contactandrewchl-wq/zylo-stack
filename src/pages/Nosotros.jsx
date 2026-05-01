@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { MessageCircle, Target, Eye, Heart } from 'lucide-react'
 import { CONTACT } from '../config/contact'
+import ObfuscatedLink from "../components/ObfuscatedLink"
 
 const pillars = [
   {
@@ -185,8 +186,8 @@ export default function Nosotros() {
           <p className="text-zylo-muted text-sm mb-4">
             ¿Tienes un proyecto en mente? Hablemos.
           </p>
-          <motion.a
-            href={CONTACT.whatsappUrl}
+          <ObfuscatedLink
+            type="whatsapp"
             target="_blank"
             rel="noreferrer"
             whileHover={{ scale: 1.05 }}
@@ -195,7 +196,7 @@ export default function Nosotros() {
           >
             <MessageCircle className="w-4 h-4" />
             Escríbenos por WhatsApp
-          </motion.a>
+          </ObfuscatedLink>
         </motion.div>
       </div>
 

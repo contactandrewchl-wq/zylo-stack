@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { Check, MessageCircle } from 'lucide-react'
 import { CONTACT } from '../config/contact'
+import ObfuscatedLink from "../components/ObfuscatedLink"
 
 const plans = [
   {
@@ -155,8 +156,8 @@ export default function Pricing() {
             </ul>
 
             {/* CTA */}
-            <motion.a
-              href={CONTACT.whatsappUrl}
+            <ObfuscatedLink
+              type="whatsapp"
               target="_blank"
               rel="noreferrer"
               whileHover={{ scale: 1.03 }}
@@ -167,7 +168,7 @@ export default function Pricing() {
             >
               <MessageCircle className="w-4 h-4" />
               Cotizar este plan
-            </motion.a>
+            </ObfuscatedLink>
           </motion.div>
         ))}
       </div>
@@ -230,8 +231,8 @@ export default function Pricing() {
           <p className="text-zylo-muted text-sm mb-4">
             ¿Tienes dudas? Escríbenos sin compromiso.
           </p>
-          <motion.a
-            href={CONTACT.whatsappUrl}
+          <ObfuscatedLink
+            type="whatsapp"
             target="_blank"
             rel="noreferrer"
             whileHover={{ scale: 1.05 }}
@@ -240,7 +241,7 @@ export default function Pricing() {
           >
             <MessageCircle className="w-4 h-4" />
             Hablar por WhatsApp
-          </motion.a>
+          </ObfuscatedLink>
         </motion.div>
       </div>
 

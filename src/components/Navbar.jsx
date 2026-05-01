@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
 import { CONTACT } from '../config/contact'
+import ObfuscatedLink from './ObfuscatedLink'
 
 const navLinks = [
   { label: 'Servicios', href: '/#servicios' },
@@ -46,8 +47,8 @@ export default function Navbar() {
 
         {/* CTA — derecha */}
         <div className="flex items-center gap-4 ml-auto">
-          <motion.a
-            href={CONTACT.whatsappUrl}
+          <ObfuscatedLink
+            type="whatsapp"
             target="_blank"
             rel="noreferrer"
             whileHover={{ scale: 1.05 }}
@@ -55,7 +56,7 @@ export default function Navbar() {
             className="hidden md:inline-flex btn-primary text-sm"
           >
             Cotizar proyecto
-          </motion.a>
+          </ObfuscatedLink>
 
           <button
             onClick={() => setMenuOpen(!menuOpen)}

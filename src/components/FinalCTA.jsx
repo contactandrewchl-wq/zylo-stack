@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { MessageCircle, Mail, ArrowRight } from 'lucide-react'
 import { CONTACT } from '../config/contact'
+import ObfuscatedLink from './ObfuscatedLink'
 
 export default function FinalCTA() {
   return (
@@ -53,8 +54,8 @@ export default function FinalCTA() {
           viewport={{ once: true }}
           className="flex flex-col sm:flex-row gap-4 justify-center"
         >
-          <motion.a
-            href={CONTACT.whatsappUrl}
+          <ObfuscatedLink
+            type="whatsapp"
             target="_blank"
             rel="noreferrer"
             whileHover={{ scale: 1.05 }}
@@ -63,17 +64,17 @@ export default function FinalCTA() {
           >
             <MessageCircle className="w-5 h-5" />
             Escribir por WhatsApp
-          </motion.a>
+          </ObfuscatedLink>
 
-          <motion.a
-            href={CONTACT.emailUrl}
+          <ObfuscatedLink
+            type="email"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="btn-secondary flex items-center justify-center gap-2 text-base py-3 px-8"
           >
             <Mail className="w-5 h-5" />
             Enviar un correo
-          </motion.a>
+          </ObfuscatedLink>
         </motion.div>
 
         {/* Nota tranquilizadora */}

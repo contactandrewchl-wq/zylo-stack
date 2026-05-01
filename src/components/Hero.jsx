@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { ArrowRight, MessageCircle } from 'lucide-react'
 import { CONTACT } from '../config/contact'
+import ObfuscatedLink from './ObfuscatedLink'
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -82,7 +83,8 @@ export default function Hero() {
           className="flex flex-col sm:flex-row items-center gap-3 mt-1 w-full sm:w-auto"
         >
           
-          <a  href={CONTACT.whatsappUrl}
+          <ObfuscatedLink  
+            type="whatsapp"
             target="_blank"
             rel="noreferrer"
             className="group flex items-center justify-center gap-2 w-full sm:w-auto px-6 py-3 rounded-full bg-zylo-orange hover:bg-zylo-orange-hover text-white text-sm font-semibold transition-all duration-200 shadow-[0_0_30px_rgba(255,107,44,0.3)] hover:shadow-[0_0_50px_rgba(255,107,44,0.5)]"
@@ -90,7 +92,7 @@ export default function Hero() {
             <MessageCircle size={16} />
             Quiero cotizar mi proyecto
             <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform duration-200" />
-          </a>
+          </ObfuscatedLink>
 
           
           <a  href="#servicios"

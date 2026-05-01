@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { MessageCircle, Mail } from 'lucide-react'
 import { CONTACT } from '../config/contact'
+import ObfuscatedLink from './ObfuscatedLink'
 
 const footerLinks = {
   Servicios: [
@@ -53,19 +54,21 @@ export default function Footer() {
             </p>
             <div className="flex gap-3">
               
-              <a  href={CONTACT.emailUrl}
+              <ObfuscatedLink  
+                type="email"
                 className="w-8 h-8 rounded-lg bg-zylo-surface hover:bg-zylo-border border border-zylo-border flex items-center justify-center text-zylo-muted hover:text-zylo-orange transition-all"
               >
                 <Mail className="w-4 h-4" />
-              </a>
+              </ObfuscatedLink>
               
-              <a  href={CONTACT.whatsappUrl}
+              <ObfuscatedLink
+                type="whatsapp"
                 target="_blank"
                 rel="noreferrer"
                 className="w-8 h-8 rounded-lg bg-zylo-surface hover:bg-zylo-border border border-zylo-border flex items-center justify-center text-zylo-muted hover:text-zylo-orange transition-all"
               >
                 <MessageCircle className="w-4 h-4" />
-              </a>
+              </ObfuscatedLink>
             </div>
           </motion.div>
 
